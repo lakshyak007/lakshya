@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Box</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #container {
+            position: relative;
+            height: 500px;
+            border: 2px dashed #007bff;
+            margin-top: 20px;
+            background-color: #e9f7fe;
+        }
+        .box {
+            position: absolute;
+            background-color: #ffeb3b;
+            border: 2px solid #f57c00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <h2>Create a Box</h2>
+    <form id="boxForm" onsubmit="createBox(); return false;">
+        <label for="x">X Coordinate:</label>
+        <input type="number" id="x" name="x" required>
+        <label for="y">Y Coordinate:</label>
+        <input type="number" id="y" name="y" required>
+        <label for="width">Width:</label>
+        <input type="number" id="width" name="width" required>
+        <label for="height">Height:</label>
+        <input type="number" id="height" name="height" required>
+        <button type="submit">Create Box</button>
+    </form>
+
+    <div id="container"></div>
+
+    <script>
+        function createBox() {
+            const x = document.getElementById('x').value;
+            const y = document.getElementById('y').value;
+            const width = document.getElementById('width').value;
+            const height = document.getElementById('height').value;
+
+            const box = document.createElement('div');
+            box.className = 'box';
+            box.style.left = x + 'px';
+            box.style.top = y + 'px';
+            box.style.width = width + 'px';
+            box.style.height = height + 'px';
+            box.textContent = `(${x}, ${y})`;
+
+            document.getElementById('container').appendChild(box);
+        }
+    </script>
+</body>
+</html>
